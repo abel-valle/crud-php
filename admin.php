@@ -3,6 +3,13 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 include 'connection.php';
+session_start();
+
+if(!isset($_SESSION['user'])) {
+    http_response_code(401);
+    echo "Acceso no autorizado.";
+    die();
+}
 
 function createProductListOptions() {
     $q = "select * from products order by id_product";
@@ -16,7 +23,9 @@ function createProductListOptions() {
                 <th>Descripción</th>
                 <th>Precio</th>
                 <th>Marca</th>
-                <th>Imagen</th>
+                <th>Ruta de Foto</th>
+                <th>Foto</th>
+                <th>Visible</th>
                 <th>Acciones</th>
             <tr>";
     while ($row = mysqli_fetch_array($recordSet)) {
@@ -26,6 +35,7 @@ function createProductListOptions() {
         $price = $row['price'];
         $brand = $row['brand'];
         $image = $row['image'];
+        $isVisible = ($row['visible'] == '1') ? 'Si' : 'No';
         $tableHtml .= "
             <tr>
                 <td>$id_product</td>
@@ -34,8 +44,10 @@ function createProductListOptions() {
                 <td>$price</td>
                 <td>$brand</td>
                 <td>$image</td>
+                <td><img src='$image' height='50px'></td>
+                <td>$isVisible</td>
                 <td>
-                    <!-- a href='update.php?idproduct=$id_product'>Editar</a -->
+                    <a href='update.php?idproduct=$id_product'>Editar</a>
                     <a href='delete.php?idproduct=$id_product'>Eliminar</a>
                 </td>
             <tr>";

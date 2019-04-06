@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 include 'connection.php';
 
 function createProductList() {
-    $q = "select * from products";
+    $q = "select * from products where visible = 1 order by id_product";
     $recordSet = execute($q);
 
     $tableHtml = "
@@ -16,7 +16,8 @@ function createProductList() {
                 <th>Descripción</th>
                 <th>Precio</th>
                 <th>Marca</th>
-                <th>Imagen</th>
+                <th>Ruta de Foto</th>
+                <th>Foto</th>
             <tr>";
     while ($row = mysqli_fetch_array($recordSet)) {
         $id_product = $row['id_product'];
@@ -33,6 +34,7 @@ function createProductList() {
                 <td>$price</td>
                 <td>$brand</td>
                 <td>$image</td>
+                <td><img src='$image' height='50px'></td>
             <tr>";
     }
     $tableHtml .= "</table>";
@@ -46,5 +48,7 @@ function createProductList() {
 <body>
     <h1>Productos</h1>
     <?php createProductList();?>
+    <br>
+    <a href='login.php'>Acceso al Administrador</a>
 </body>
 </html>

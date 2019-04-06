@@ -22,7 +22,7 @@ if(isset($_POST['insert'])) {
             echo "Error al cargar el archivo.";
         }
     }
-    echo "Pasó carga de imagen.";
+    
     if($uploadOk == 1) {
         $q = "insert into products (name, description, price, brand, image) values ('$name','$description','$price','$brand','$fileNamePath')";
         execute($q);
@@ -41,7 +41,7 @@ if(isset($_POST['insert'])) {
         Descripción: <input type='text' name='description'> <br>
         Precio: <input type='number' name='price' step='any'> <br>
         Marca: <input type='text' name='brand'> <br>
-        Foto: <input type='file' name='image'> <br>
+        Foto: <input type='file' name='image'> <br><br>
         <input type='submit' value='Crear producto'>
     </form>
 </body>
