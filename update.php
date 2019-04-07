@@ -43,7 +43,7 @@ if (isset($_POST['update'])) {
     $fileNamePath = "";
 
     if ($_FILES['image']['name'] != "") {
-        $fileName = $_FILES['image']['name'];
+        $fileName = strtolower($_FILES['image']['name']);
         $tempFile = $_FILES['image']['tmp_name'];
         $fileNamePath = 'images/' . $fileName;
 
@@ -74,7 +74,7 @@ if (isset($_POST['update'])) {
     <form action='update.php' method='post' enctype='multipart/form-data'>
         <input type='hidden' name='update' value='update'>
         <input type='hidden' name='id_product' value='<?php echo $id_product; ?>'>
-        
+
         Nombre:      <input type='text' name='name'         value='<?php echo $name; ?>'>             <br>
         Descripción: <input type='text' name='description'  value='<?php echo $description; ?>'>      <br>
         Precio:      <input type='number' name='price'      value='<?php echo $price; ?>' step='any'> <br>

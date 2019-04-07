@@ -12,7 +12,7 @@ if(isset($_POST['insert'])) {
     $brand = $_POST['brand'];
 
     if($_FILES['image']['name'] != "") {
-        $fileName = $_FILES['image']['name'];
+        $fileName = strtolower($_FILES['image']['name']);
         $tempFile = $_FILES['image']['tmp_name'];
         $fileNamePath = 'images/' . $fileName;
 
