@@ -63,6 +63,8 @@ function createProductListOptions() {
 <body>
     <h1>Productos</h1>
     <h3>Administrador</h3>
+    <a href='login.php?killsession=1'>Terminar Sesión</a>
+    <br><br>
     <a href='create.php'>Registro de productos</a>
     <br><br>
     <?php createProductListOptions(); ?>

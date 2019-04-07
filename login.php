@@ -5,6 +5,10 @@ error_reporting(E_ALL);
 include 'connection.php';
 session_start();
 
+if(isset($_GET['killsession'])) {
+    session_destroy();
+}
+
 if(isset($_POST['user'])) {
     $user = $_POST['user'];
     $pass = $_POST['pass'];
