@@ -35,7 +35,7 @@ function createProductListOptions() {
         $price = $row['price'];
         $brand = $row['brand'];
         $image = $row['image'];
-        $isVisible = ($row['visible'] == '1') ? 'Si' : 'No';
+        $isVisible = ($row['visible'] != '0') ? 'Si' : 'No';
         $tableHtml .= "
             <tr>
                 <td>$id_product</td>
