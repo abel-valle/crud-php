@@ -24,6 +24,7 @@ if(isset($_POST['user'])) {
         echo "Verificar usuario y contraseña.";
     }
 }
+
 ?>
 
 <!DOCTYPE html>
